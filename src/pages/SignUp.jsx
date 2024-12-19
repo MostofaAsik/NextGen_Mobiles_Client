@@ -121,7 +121,10 @@ const SignUp = () => {
                             id="password"
                             {...register('password', {
                                 required: 'Password is required',
-                                minLength: { value: 8, message: 'Password must be at least 8 characters long' }
+                                pattern: {
+                                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+                                    message: 'Password must be at least 8 characters, include uppercase, lowercase, a number, and a special character.'
+                                }
                             })}
                             className="w-full px-3 sm:px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm"
                             placeholder="Enter your password"
