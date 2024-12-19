@@ -32,7 +32,7 @@ const AboutUs = () => {
         <div className="bg-gray-100">
 
             {/* Hero Section */}
-            <section className="bg-blue-600 text-white py-20">
+            <section className="bg-gray-900  text-white py-20">
                 <div className="container mx-auto px-6 text-center">
                     <h1 className="text-4xl md:text-5xl font-bold mb-6">
                         About Our Company
@@ -50,7 +50,7 @@ const AboutUs = () => {
             </section>
 
             {/* About Us Section */}
-            <section id="about" className="py-20">
+            <section id="about" className="py-0 bg-gray-900 ">
                 <div className="container mx-auto px-6 flex flex-col md:flex-row items-center gap-10">
 
                     {/* Image Section */}
@@ -64,7 +64,7 @@ const AboutUs = () => {
 
                     {/* Text Section */}
                     <div className="w-full md:w-1/2">
-                        <h2 className="text-3xl font-bold text-gray-800 mb-6">
+                        <h2 className="text-3xl font-bold text-white mb-6">
                             Who We Are
                         </h2>
                         <p className="text-lg text-gray-600 mb-6">
@@ -85,22 +85,22 @@ const AboutUs = () => {
             </section>
 
             {/* Team Section */}
-            <section id="team" className="bg-white py-20">
+            <section id="team" className="bg-gray-900  py-20">
                 <div className="container mx-auto px-6">
-                    <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">
+                    <h2 className="text-3xl font-bold text-center text-white mb-12">
                         Meet Our Team
                     </h2>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
                         {teamMembers.map(member => (
-                            <div key={member.id} className="bg-gray-100 rounded-lg shadow-md p-6 text-center">
+                            <div key={member.id} className="bg-gray-900 rounded-lg shadow-md p-6 text-center border">
                                 <img
                                     src={member.image}
                                     alt={member.name}
                                     className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
                                 />
-                                <h3 className="text-xl font-bold text-gray-800">{member.name}</h3>
-                                <p className="text-gray-600">{member.role}</p>
+                                <h3 className="text-xl font-bold text-white">{member.name}</h3>
+                                <p className="text-white">{member.role}</p>
                             </div>
                         ))}
                     </div>
