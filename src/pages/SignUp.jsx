@@ -11,7 +11,7 @@ const SignUp = () => {
     const imgbbApiKey = import.meta.env.VITE_IMGBB_API_KEY;
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [loading, setLoading] = useState(false);
-    const { createUser, updateUserProfile } = useAuth()
+    const { createUser, updateUserProfile, goooleLogin } = useAuth()
     const navigate = useNavigate();
 
 
@@ -62,7 +62,14 @@ const SignUp = () => {
         }
     };
 
+    const handleGoogleLogin = async () => {
+        await goooleLogin()
+            .then(() => {
+                navigate('/')
+            })
 
+
+    }
 
 
     return (
@@ -165,7 +172,9 @@ const SignUp = () => {
                 <h2 className="text-2xl font-bold">Or Sign Up Using</h2>
 
                 {/* Google Login Button */}
-                <button className="flex items-center w-full justify-center px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-100 shadow-md">
+                <button
+                    onClick={handleGoogleLogin}
+                    className="flex items-center w-full justify-center px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-100 shadow-md">
                     <FcGoogle className="w-6 h-6 mr-2" />
                     Sign in with Google
                 </button>

@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router';
+import useAuth from '../hooks/useAuth';
 
 const Navbar = () => {
-    const [user, setUser] = useState(null)
 
-    // Function to add item to wishlist and refetch the wishlist length
+    const { user, signOutUser } = useAuth()
+    console.log(user);
+
+
 
     const navLinks = (
         <>
@@ -71,11 +74,15 @@ const Navbar = () => {
                 <div className='navbar-end'>
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn m-1">
-                            <img className='w-10 rounded-full' src={user.photoURL || '/user.png'} alt="photo" />
+                            <img title={user?.displayName
+                            }
+                                className='w-10 rounded-full' src={user?.photoURL || '/user.png'} alt="photo" />
                         </div>
                         <ul tabIndex={0} className="dropdown-content menu bg-gray-900 rounded-box z-[1] w-52 p-2 shadow">
                             <li><Link to="/dashboard" className="text-yellow-500 hover:text-yellow-300 transition-colors">Dashboard</Link></li>
-                            <li><button className="text-yellow-500 hover:text-yellow-300 transition-colors">LogOut</button></li>
+                            <li><button
+                                onClick={() => signOutUser()}
+                                className="text-yellow-500 hover:text-yellow-300 transition-colors">LogOut</button></li>
                         </ul>
                     </div>
                 </div>

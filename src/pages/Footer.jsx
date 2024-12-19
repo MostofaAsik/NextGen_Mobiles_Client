@@ -9,7 +9,7 @@ const Footer = () => {
 
 
                     <div>
-                        <h2 className="text-2xl font-bold mb-4">YourBrand</h2>
+                        <h2 className="text-2xl font-bold mb-4">NextGen Mobiles</h2>
                         <p className="text-gray-400">We offer the best tech gadgets and mobile devices at unbeatable prices. Follow us to stay updated with our latest products.</p>
                         <div className="mt-4 flex space-x-4">
                             <a href="#" className="text-gray-400 hover:text-white"><FaFacebookF /></a>

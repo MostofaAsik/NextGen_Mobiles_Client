@@ -1,20 +1,37 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
+import useAuth from '../hooks/useAuth';
+import { toast, ToastContainer } from 'react-toastify';
 
 const SignIn = () => {
-    // Use the useForm hook from react-hook-form
-    const { register, handleSubmit, formState: { errors } } = useForm();
+
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { createSignIn, goooleLogin } = useAuth()
+    const navigate = useNavigate()
 
     // Form submit handler
     const submitHandler = (data) => {
-        console.log('Form data:', data);
+
+        const { email, password } = data
+
+        createSignIn(email, password)
+            .then(result => {
+                console.log(result)
+                toast('User loggin Successfuly')
+                navigate('/')
+                reset()
+            })
+
     };
 
     // Google Login success handler
-    const handleGoogleLogin = () => {
-        console.log('Google login initiated');
+    const handleGoogleLogin = async () => {
+        await goooleLogin()
+            .then(() => {
+                navigate('/')
+            })
     };
 
     return (
@@ -87,6 +104,7 @@ const SignIn = () => {
                     </Link>
                 </p>
             </div>
+            <ToastContainer />
         </div>
     );
 };
