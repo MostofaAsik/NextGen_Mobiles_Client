@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-
 import axios from 'axios';
 import useAuth from './useAuth';
 
@@ -7,6 +6,7 @@ const useUserData = () => {
     const { user, loading: authLoading } = useAuth();
     const [userData, setUserData] = useState(null);
     const [loading, setLoading] = useState(true);
+    console.log(userData)
 
     useEffect(() => {
         const fetchData = async () => {

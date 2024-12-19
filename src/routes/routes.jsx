@@ -5,6 +5,8 @@ import AboutUs from "../pages/AboutUs";
 import ContactUs from "../pages/ContactUs";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
+import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../layout/DashBoard";
 
 const router = createBrowserRouter([
     {
@@ -31,6 +33,17 @@ const router = createBrowserRouter([
                 path: '/contact',
                 element: <ContactUs />
             }
+        ]
+    },
+    {
+        path: '/dashboard',
+        element: <PrivateRoute>
+            <Dashboard />
+        </PrivateRoute>,
+        children: [
+            {
+
+            },
         ]
     }
 ])
