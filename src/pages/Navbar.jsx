@@ -2,26 +2,53 @@ import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router';
 
 const Navbar = () => {
-    const [user, setUser] = useState('MAS')
-
-
-
-
+    const [user, setUser] = useState(null)
 
     // Function to add item to wishlist and refetch the wishlist length
 
-
     const navLinks = (
         <>
-            <li><NavLink to='/'>Home</NavLink></li>
-            <li><NavLink to='/products'>Products</NavLink></li>
-            <li><NavLink to='/about'>About</NavLink></li>
-            <li><NavLink to='/contact'>Contact</NavLink></li>
+            <li>
+                <NavLink
+                    to='/'
+                    className="text-yellow-500 hover:text-yellow-300 transition-colors px-4 py-2 rounded-md"
+                    activeClassName="bg-yellow-500 text-black"
+                >
+                    Home
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to='/products'
+                    className="text-yellow-500 hover:text-yellow-300 transition-colors px-4 py-2 rounded-md"
+                    activeClassName="bg-yellow-500 text-black"
+                >
+                    Products
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to='/about'
+                    className="text-yellow-500 hover:text-yellow-300 transition-colors px-4 py-2 rounded-md"
+                    activeClassName="bg-yellow-500 text-black"
+                >
+                    About
+                </NavLink>
+            </li>
+            <li>
+                <NavLink
+                    to='/contact'
+                    className="text-yellow-500 hover:text-yellow-300 transition-colors px-4 py-2 rounded-md"
+                    activeClassName="bg-yellow-500 text-black"
+                >
+                    Contact
+                </NavLink>
+            </li>
         </>
     );
 
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar bg-gray-900 text-white">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -29,11 +56,11 @@ const Navbar = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
                         </svg>
                     </div>
-                    <ul tabIndex={0} className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                    <ul tabIndex={0} className="menu menu-sm dropdown-content bg-gray-900 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                         {navLinks}
                     </ul>
                 </div>
-                <h2 className="font-bold text-2xl">NextGen Mobiles</h2>
+                <h2 className="font-bold text-2xl text-yellow-500">NextGen Mobiles</h2>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
@@ -42,20 +69,19 @@ const Navbar = () => {
             </div>
             {user ? (
                 <div className='navbar-end'>
-
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn m-1">
-                            <img className='w-10' src={user.photoURL || '/user.png'} alt="photo" />
+                            <img className='w-10 rounded-full' src={user.photoURL || '/user.png'} alt="photo" />
                         </div>
-                        <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                            <li><Link >Dashboard</Link></li>
-                            <li><button >LogOut</button></li>
+                        <ul tabIndex={0} className="dropdown-content menu bg-gray-900 rounded-box z-[1] w-52 p-2 shadow">
+                            <li><Link to="/dashboard" className="text-yellow-500 hover:text-yellow-300 transition-colors">Dashboard</Link></li>
+                            <li><button className="text-yellow-500 hover:text-yellow-300 transition-colors">LogOut</button></li>
                         </ul>
                     </div>
                 </div>
             ) : (
                 <div className="navbar-end">
-                    <Link className="btn border bg-gray-200 font-bold">SignIn</Link>
+                    <Link to="/signin" className="btn border bg-yellow-500 text-black font-bold hover:bg-yellow-400 transition-colors">SignIn</Link>
                 </div>
             )}
         </div>
