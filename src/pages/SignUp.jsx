@@ -1,47 +1,69 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
+import { toast, ToastContainer } from 'react-toastify';
+import useAuth from '../hooks/useAuth';
+import { useNavigate } from 'react-router';
+import axios from 'axios';
 
 const SignUp = () => {
+
+    const imgbbApiKey = import.meta.env.VITE_IMGBB_API_KEY;
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [loading, setLoading] = useState(false);
+    const { createUser, updateUserProfile } = useAuth()
+    const navigate = useNavigate();
 
 
-    const imgbbApiKey = '0ed5a721afde96020006e29d6da8f29f';
+
 
     const submitHandler = async (data) => {
         try {
             setLoading(true);
-
-
             if (data.image[0]) {
                 const formData = new FormData();
                 formData.append('image', data.image[0]);
-
                 const response = await fetch(`https://api.imgbb.com/1/upload?key=${imgbbApiKey}`, {
                     method: 'POST',
                     body: formData
                 });
-
                 const result = await response.json();
-                if (result.success) {
-                    const imageUrl = result.data.url;
-                    console.log('Image URL:', imageUrl);
-                    data.image = imageUrl;
-                } else {
-                    console.error('Image upload failed', result);
+                if (!result.success) {
+                    toast.error('Image upload failed, please try again.');
+                    setLoading(false);
+                    return;
                 }
+                data.image = result.data.url;
             }
-            setLoading(false);
 
+            const { name, email, password, role } = data;
+            console.log(data.name, data.image);
+            const status = role === 'buyer' ? 'approved' : 'pending';
+            const userData = { email, role, status, wishList: [] };
 
-            console.log('Form data:', data);
-            reset()
+            try {
+                //creating user with firebase
+                const result = await createUser(email, password);
+                //updating userProfle
+                await updateUserProfile(name, data.image);
+                //user send on db
+                await axios.post(`${import.meta.env.VITE_BASE_URL}/users`, userData);
+                toast.success('Account created successfully');
+                reset();
+                navigate('/')
+            } catch (error) {
+                toast.error(error.message);
+            } finally {
+                setLoading(false);
+            }
         } catch (error) {
-            setLoading(false); // End loading state in case of error
-            console.error('Error submitting the form:', error);
+            toast.error('Something went wrong.');
+            setLoading(false);
         }
     };
+
+
+
 
     return (
         <div className="flex flex-col lg:flex-row max-w-5xl mx-auto bg-white p-8 rounded-lg shadow-md space-y-8 lg:space-y-0 lg:space-x-10">
@@ -148,7 +170,7 @@ const SignUp = () => {
                     Sign in with Google
                 </button>
             </div>
-
+            <ToastContainer />
         </div>
     );
 };
