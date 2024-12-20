@@ -5,8 +5,9 @@ import { NavLink } from 'react-router';
 import useUserData from '../../hooks/useUserData';
 import buyerRoutes from './Buyer/buyerRoutes';
 import sellerRoutes from './Seller/sellerRoutes';
+import adminRoutes from './Admin/adminRoutes';
 
-;
+
 
 const Sidebar = ({ handleNavLinkClick }) => {
     const { userData, loading } = useUserData();
@@ -24,6 +25,21 @@ const Sidebar = ({ handleNavLinkClick }) => {
 
     return (
         <>
+            {/* //admin route  */}
+            {isAdmin && adminRoutes.map((route) => (
+                <NavLink
+                    key={route.id}
+                    to={route.path}
+                    className={({ isActive }) =>
+                        `flex items-center space-x-4 py-2 px-4 text-gray-300 hover:bg-blue-800 hover:text-white rounded-md ${isActive ? 'bg-blue-800 text-white' : ''}`
+                    }
+                    onClick={handleNavLinkClick}
+                >
+                    <route.icon className="text-2xl" />
+                    <span>{route.title}</span>
+                </NavLink>
+            ))}
+            {/* //seller route  */}
             {isSeller && sellerRoutes.map((route) => (
                 <NavLink
                     key={route.id}
@@ -51,6 +67,7 @@ const Sidebar = ({ handleNavLinkClick }) => {
                 </NavLink>
             ))}
 
+            {/* //common route  */}
             <NavLink
                 to='/'
                 className={({ isActive }) =>
