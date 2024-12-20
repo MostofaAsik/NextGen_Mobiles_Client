@@ -8,7 +8,7 @@ import Loader from '../../../components/Loader';
 
 const AllUsers = () => {
     const [users, setUsers] = useState([]);
-    const { loading } = useUserData()
+    const { loading } = useUserData();
 
     useEffect(() => {
         const fetchUsers = async () => {
@@ -60,9 +60,9 @@ const AllUsers = () => {
             }
         } catch (error) {
             console.error('Error updating user role:', error);
-
         }
     };
+
     // Delete a user
     const handleDeleteUser = async (userId) => {
         Swal.fire({
@@ -83,7 +83,7 @@ const AllUsers = () => {
                     });
 
                     if (res.data.success) {
-                        setUsers(users.filter(user => user._id !== userId)); // Remove deleted user from state
+                        setUsers(users.filter(user => user._id !== userId));
                         Swal.fire("Deleted!", "User has been deleted.", "success");
                     } else {
                         Swal.fire("Failed!", "User not found or already deleted.", "error");
@@ -97,61 +97,65 @@ const AllUsers = () => {
     };
 
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
-            <div className="w-full max-w-6xl bg-white rounded-lg shadow-lg p-8">
-                <h2 className="text-2xl font-bold text-center mb-6">All Users</h2>
+        <div className="flex justify-center items-center min-h-screen bg-gray-100 p-2 sm:p-4">
+            <div className="w-full max-w-6xl bg-white rounded-lg shadow-lg p-4 sm:p-8">
+                <h2 className="text-xl sm:text-2xl font-bold text-center mb-4 sm:mb-6">All Users</h2>
+
                 {loading && <Loader />}
+
                 {users.length === 0 ? (
                     <p className="text-center text-gray-500">No users found.</p>
                 ) : (
-                    <table className="w-full border-collapse border border-gray-300">
-                        <thead>
-                            <tr className="bg-gray-100 text-left">
-                                <th className="p-4 border border-gray-300">#</th>
-                                <th className="p-4 border border-gray-300">User</th>
-                                <th className="p-4 border border-gray-300">Email</th>
-                                <th className="p-4 border border-gray-300">Role</th>
-                                <th className="p-4 border border-gray-300">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {users.map((user, index) => (
-                                <tr key={user._id} className="border-t hover:bg-gray-50">
-                                    <td className="p-4 border border-gray-300">{index + 1}</td>
-                                    <td className="p-4 border border-gray-300 flex items-center space-x-4">
-                                        <img
-                                            src={user.image || 'https://via.placeholder.com/50'}
-                                            alt="User"
-                                            className="w-10 h-10 rounded-full"
-                                        />
-                                        <div>
-                                            <p className="font-bold">{user.name}</p>
-                                        </div>
-                                    </td>
-                                    <td className="p-4 border border-gray-300">{user.email}</td>
-                                    <td className="p-4 border border-gray-300">
-                                        <select
-                                            value={user.role}
-                                            onChange={(e) => handleChangeRole(user._id, e.target.value)}
-                                            className="border border-gray-300 rounded-lg p-2"
-                                        >
-                                            <option value="buyer">Buyer</option>
-                                            <option value="seller">Seller</option>
-                                            <option value="admin">Admin</option>
-                                        </select>
-                                    </td>
-                                    <td className="p-4 border border-gray-300">
-                                        <button
-                                            onClick={() => handleDeleteUser(user._id)}
-                                            className="text-red-500 hover:text-red-700"
-                                        >
-                                            <AiOutlineDelete size={20} />
-                                        </button>
-                                    </td>
+                    <div className="w-full overflow-x-auto">
+                        <table className="w-full border-collapse border border-gray-300">
+                            <thead>
+                                <tr className="bg-gray-100 text-left">
+                                    <th className="p-2 sm:p-4 border border-gray-300 hidden sm:table-cell">#</th>
+                                    <th className="p-2 sm:p-4 border border-gray-300 hidden sm:table-cell">User</th>
+                                    <th className="p-2 sm:p-4 border border-gray-300">Email</th>
+                                    <th className="p-2 sm:p-4 border border-gray-300">Role</th>
+                                    <th className="p-2 sm:p-4 border border-gray-300">Actions</th>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {users.map((user, index) => (
+                                    <tr key={user._id} className="border-t hover:bg-gray-50">
+                                        <td className="p-2 sm:p-4 border border-gray-300 hidden sm:table-cell">{index + 1}</td>
+                                        <td className="p-2 sm:p-4 border border-gray-300 hidden sm:table-cell flex items-center space-x-4">
+                                            <img
+                                                src={user.image || 'https://via.placeholder.com/50'}
+                                                alt="User"
+                                                className="w-8 h-8 sm:w-10 sm:h-10 rounded-full"
+                                            />
+                                            <div>
+                                                <p className="font-bold text-sm sm:text-base">{user.name}</p>
+                                            </div>
+                                        </td>
+                                        <td className="p-2 sm:p-4 border border-gray-300 text-sm sm:text-base">{user.email}</td>
+                                        <td className="p-2 sm:p-4 border border-gray-300">
+                                            <select
+                                                value={user.role}
+                                                onChange={(e) => handleChangeRole(user._id, e.target.value)}
+                                                className="border border-gray-300 rounded-lg p-1 sm:p-2 text-sm sm:text-base"
+                                            >
+                                                <option value="buyer">Buyer</option>
+                                                <option value="seller">Seller</option>
+                                                <option value="admin">Admin</option>
+                                            </select>
+                                        </td>
+                                        <td className="p-2 sm:p-4 border border-gray-300">
+                                            <button
+                                                onClick={() => handleDeleteUser(user._id)}
+                                                className="text-red-500 hover:text-red-700"
+                                            >
+                                                <AiOutlineDelete size={20} />
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 )}
                 <ToastContainer />
             </div>
