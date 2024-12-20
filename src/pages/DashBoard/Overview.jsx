@@ -22,8 +22,8 @@ const Overview = () => {
                 </div>
                 <div className="mt-4 md:mt-0 md:ml-6 text-center md:text-left">
                     <h2 className="text-2xl font-bold text-gray-800"></h2>
-                    <p className="text-gray-600">{userData.email}</p>
-                    <p className="text-sm text-blue-600 mt-2">{userData?.role}</p>
+                    <p className="text-gray-600">sadj</p>
+                    <p className="text-sm text-blue-600 mt-2">dsajdha</p>
                 </div>
             </div>
 

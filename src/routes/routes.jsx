@@ -10,6 +10,9 @@ import Dashboard from "../layout/DashBoard";
 import Overview from "../pages/DashBoard/Overview";
 import AddProduct from "../pages/DashBoard/Seller/AddProduct";
 import MyProducts from "../pages/DashBoard/Seller/MyProducts";
+import MyWishList from "../pages/DashBoard/Buyer/MyWishList";
+import MyCarts from "../pages/DashBoard/Buyer/MyCarts";
+import AllUsers from "../pages/DashBoard/Admin/AllUsers ";
 
 
 const router = createBrowserRouter([
@@ -50,6 +53,16 @@ const router = createBrowserRouter([
                 path: '/dashboard/overview',
                 element: <Overview />
             },
+            //buyer route
+            {
+                path: '/dashboard/wishlist',
+                element: <MyWishList />
+            },
+            {
+                path: '/dashboard/my-orders',
+                element: <MyCarts />
+            },
+
             //seller route
             {
                 path: '/dashboard/add-product',
@@ -58,6 +71,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/my-products',
                 element: <MyProducts />
+            },
+            //admin route
+            {
+                path: '/dashboard/all-users',
+                element: <AllUsers />
             },
         ]
     }
