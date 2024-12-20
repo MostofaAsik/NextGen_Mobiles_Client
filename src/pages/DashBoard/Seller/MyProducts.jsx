@@ -6,28 +6,31 @@ import useAuth from '../../../hooks/useAuth';
 
 const MyProducts = () => {
     const [products, setProducts] = useState([]);
-    const { user } = useAuth();
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    // Load products when the component mounts
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/my-products?email=${user?.email}`, {
+                setLoading(true);
+                const token = localStorage.getItem('access-token');
+                const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/user/products`, {
                     headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${localStorage.getItem('access-token')}`
+                        'Authorization': `Bearer ${token}`
                     }
                 });
                 setProducts(res.data);
             } catch (error) {
-                console.error('Error fetching products:', error);
-                toast.error('Failed to load products');
+                setError('Failed to load products. Please try again later.');
+            } finally {
+                setLoading(false);
             }
         };
-        if (user?.email) {
-            fetchProducts();
-        }
-    }, [user?.email]);
+
+        fetchProducts();
+    }, []);
+
+
 
     // Delete a product
     const handleDelete = async (productId) => {
@@ -53,6 +56,13 @@ const MyProducts = () => {
         // Optionally, open a modal or navigate to an edit page
     };
 
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    if (error) {
+        return <p className="text-red-500">{error}</p>;
+    }
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4">
             <div className="w-full max-w-6xl bg-white rounded-lg shadow-lg p-8">

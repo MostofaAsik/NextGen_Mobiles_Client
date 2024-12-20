@@ -36,10 +36,10 @@ const SignUp = () => {
                 data.image = result.data.url;
             }
 
-            const { name, email, password, role } = data;
+            const { name, email, password, role, image } = data;
             console.log(data.name, data.image);
             const status = role === 'buyer' ? 'approved' : 'pending';
-            const userData = { email, role, status, wishList: [] };
+            const userData = { email, name, image, role, status, wishList: [] };
 
             try {
                 //creating user with firebase

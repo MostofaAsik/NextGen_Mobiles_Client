@@ -13,6 +13,7 @@ import MyProducts from "../pages/DashBoard/Seller/MyProducts";
 import MyWishList from "../pages/DashBoard/Buyer/MyWishList";
 import MyCarts from "../pages/DashBoard/Buyer/MyCarts";
 import AllUsers from "../pages/DashBoard/Admin/AllUsers ";
+import Products from "../pages/Products";
 
 
 const router = createBrowserRouter([
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp />
+            },
+            {
+                path: '/products',
+                element: <Products />
             },
             {
                 path: '/about',

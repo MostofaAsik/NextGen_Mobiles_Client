@@ -13,6 +13,8 @@ const AddProduct = () => {
             ...data,
             email: user?.email
         };
+        console.log(product);
+        console.log(localStorage.getItem('access-token'));
 
         axios.post(`${import.meta.env.VITE_BASE_URL}/add-product`, product, {
             headers: {
@@ -29,7 +31,6 @@ const AddProduct = () => {
                 console.error('Error:', error);
                 toast.error('Something went wrong while adding the product.');
             });
-
 
 
 
