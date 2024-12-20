@@ -7,6 +7,10 @@ import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../layout/DashBoard";
+import Overview from "../pages/DashBoard/Overview";
+import AddProduct from "../pages/DashBoard/Seller/AddProduct";
+import MyProducts from "../pages/DashBoard/Seller/MyProducts";
+
 
 const router = createBrowserRouter([
     {
@@ -41,8 +45,19 @@ const router = createBrowserRouter([
             <Dashboard />
         </PrivateRoute>,
         children: [
+            //common route
             {
-
+                path: '/dashboard/overview',
+                element: <Overview />
+            },
+            //seller route
+            {
+                path: '/dashboard/add-product',
+                element: <AddProduct />
+            },
+            {
+                path: '/dashboard/my-products',
+                element: <MyProducts />
             },
         ]
     }
