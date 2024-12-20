@@ -165,7 +165,7 @@ const SignUp = () => {
                         className={`w-full px-4 py-2 text-white bg-blue-500 rounded-md shadow-md 
                             ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-blue-600'}`}
                     >
-                        {loading ? 'Uploading Image...' : 'Create Account'}
+                        {loading ? 'Creating account...' : 'Create Account'}
                     </button>
                 </form>
             </div>

@@ -73,10 +73,10 @@ const Navbar = () => {
             {user ? (
                 <div className='navbar-end'>
                     <div className="dropdown dropdown-end">
-                        <div tabIndex={0} role="button" className="btn m-1">
+                        <div tabIndex={0} role="button" className="bg-yellow-400 rounded-lg m-1">
                             <img title={user?.displayName
                             }
-                                className='w-10 rounded-full' src={user?.photoURL || '/user.png'} alt="photo" />
+                                className='w-10 h-10 rounded-full' src={user?.photoURL || '/user.png'} alt="photo" />
                         </div>
                         <ul tabIndex={0} className="dropdown-content menu bg-gray-900 rounded-box z-[1] w-52 p-2 shadow">
                             <li><Link to="/dashboard" className="text-yellow-500 hover:text-yellow-300 transition-colors">Dashboard</Link></li>
