@@ -14,6 +14,7 @@ import MyWishList from "../pages/DashBoard/Buyer/MyWishList";
 import MyCarts from "../pages/DashBoard/Buyer/MyCarts";
 import AllUsers from "../pages/DashBoard/Admin/AllUsers ";
 import Products from "../pages/Products";
+import ViewDetails from "../pages/ViewDetails";
 
 
 const router = createBrowserRouter([
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
             {
                 path: '/products',
                 element: <Products />
+            },
+            {
+                path: "/product/:productId",
+                element: <ViewDetails />
             },
             {
                 path: '/about',

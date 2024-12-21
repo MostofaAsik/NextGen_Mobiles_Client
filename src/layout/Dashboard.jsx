@@ -29,7 +29,7 @@ const Dashboard = () => {
 
             {/* Main Content */}
             <div className="flex-1 flex flex-col">
-                <header className="flex items-center justify-between bg-white shadow p-4 md:p-6">
+                <header className="flex items-center justify-between bg-white shadow p-2 md:p-6">
                     <button onClick={toggleSidebar} className="text-blue-900 md:hidden">
                         <AiOutlineMenu className="text-2xl" />
                     </button>
@@ -37,7 +37,7 @@ const Dashboard = () => {
                     <h2 className="text-2xl font-semibold text-gray-800"><p className='text-yellow-500'>{userData?.role}</p> Dashboard</h2>
 
                     <div className="flex items-center space-x-4">
-                        <button onClick={() => signOutUser()} className="flex items-center space-x-2 text-red-500 hover:text-red-700">
+                        <button onClick={() => signOutUser()} className="flex items-center space-x-2 text-red-500 hover:text-red-700 pr-6">
                             <AiOutlineLogout className="text-xl" />
                             <span>Logout</span>
                         </button>

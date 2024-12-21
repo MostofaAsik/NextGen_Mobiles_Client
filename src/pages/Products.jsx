@@ -5,6 +5,7 @@ import useUserData from '../hooks/useUserData';
 import SearchBar from './SearchBar';
 import Loader from '../components/Loader';
 import { toast, ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router';
 
 
 const Products = () => {
@@ -20,8 +21,8 @@ const Products = () => {
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const itemsPerPage = 3;
-
     const { userData } = useUserData()
+    const navigate = useNavigate()
 
 
     // Fetch products based on filters, sort, and pagination
@@ -160,6 +161,12 @@ const Products = () => {
                                 <p className="text-gray-800 font-bold">${product.price}</p>
 
                                 {/* Add to Wishlist Button */}
+                                <button
+                                    onClick={() => navigate(`/product/${product._id}`)}
+                                    className="flex items-center justify-center bg-blue-500 text-white font-bold py-2 px-4 rounded-lg w-full mt-2 hover:bg-blue-600"
+                                >
+                                    View Details
+                                </button>
                                 <button
                                     onClick={() => addToWishlist(product)}
                                     className="flex items-center justify-center bg-red-500 text-white font-bold py-2 px-4 rounded-lg w-full mt-2 hover:bg-red-600"
