@@ -158,20 +158,25 @@ const MyProducts = () => {
             </div>
 
             {isModalOpen && productToEdit && (
-                <div className="fixed inset-0 flex justify-center items-center bg-gray-600 bg-opacity-50">
+                <div className="fixed inset-0 flex justify-center items-center bg-gray-600 bg-opacity-50 ">
                     <div className="bg-white p-10 rounded shadow-lg md:w-1/2 w-96">
 
-                        <form onSubmit={handleUpdateProduct}>
+                        <form onSubmit={handleUpdateProduct} className=''>
                             <label className="block text-gray-700 font-medium mb-1" htmlFor="title">Title</label>
                             <input type="text" value={productToEdit.title} onChange={(e) => setProductToEdit({ ...productToEdit, title: e.target.value })} className="w-full p-2 border mb-4" placeholder="Title" />
+
                             <label className="block text-gray-700 font-medium mb-1" htmlFor="title">Brand</label>
                             <input type="text" value={productToEdit.brand} onChange={(e) => setProductToEdit({ ...productToEdit, brand: e.target.value })} className="w-full p-2 border mb-4" placeholder="Brand" />
+
                             <label className="block text-gray-700 font-medium mb-1" htmlFor="title">Price</label>
                             <input type="number" value={productToEdit.price} onChange={(e) => setProductToEdit({ ...productToEdit, price: e.target.value })} className="w-full p-2 border mb-4" placeholder="Price" />
+
                             <label className="block text-gray-700 font-medium mb-1" htmlFor="title">Stock</label>
                             <input type="number" value={productToEdit.stock} onChange={(e) => setProductToEdit({ ...productToEdit, stock: e.target.value })} className="w-full p-2 border mb-4" placeholder="Stock" />
+
                             <label className="block text-gray-700 font-medium mb-1" htmlFor="title">Category</label>
                             <input type="text" value={productToEdit.category} onChange={(e) => setProductToEdit({ ...productToEdit, category: e.target.value })} className="w-full p-2 border mb-4" placeholder="Category" />
+
                             <label className="block text-gray-700 font-medium mb-1" htmlFor="title">Image</label>
                             <input type="text" value={productToEdit.imageURL} onChange={(e) => setProductToEdit({ ...productToEdit, imageURL: e.target.value })} className="w-full p-2 border mb-4" placeholder="Image URL" />
 

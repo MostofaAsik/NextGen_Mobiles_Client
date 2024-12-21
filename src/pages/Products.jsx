@@ -66,8 +66,7 @@ const Products = () => {
         }
 
         try {
-            const response = await axios.patch(
-                'http://localhost:5000/wishlist',
+            const response = await axios.patch(`${import.meta.env.VITE_BASE_URL}/wishlist`,
                 { userEmail: userData?.email, productId: product._id },
                 {
                     headers: {
