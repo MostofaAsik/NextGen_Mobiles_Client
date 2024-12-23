@@ -5,12 +5,12 @@ const Categories = () => {
         {
             id: 1,
             name: 'Smartphones',
-            image: '/categories/smartphone (1).webp',
+            image: '/categories/smartphone.jpg',
         },
         {
             id: 2,
             name: 'Laptops',
-            image: '/categories/laptop.webp',
+            image: '/categories/laptop.jpg',
         },
         {
             id: 3,
