@@ -5,23 +5,23 @@ const Categories = () => {
         {
             id: 1,
             name: 'Smartphones',
-            image: '/public/categories/smartphone (1).webp',
+            image: '/categories/smartphone (1).webp',
         },
         {
             id: 2,
             name: 'Laptops',
-            image: '/public/categories/laptop.webp',
+            image: '/categories/laptop.webp',
         },
         {
             id: 3,
             name: 'Headphones',
-            image: '/public/categories/ear.jpg',
+            image: '/categories/ear.jpg',
         },
 
         {
             id: 4,
             name: 'Smart Watches',
-            image: '/public/categories/watch.jpg',
+            image: '/categories/watch.jpg',
         },
 
     ];

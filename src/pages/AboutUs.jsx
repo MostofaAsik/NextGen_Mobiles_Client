@@ -3,25 +3,25 @@ import React from 'react';
 const teamMembers = [
     {
         id: 1,
-        image: '/public/Testmonials/p1.jpeg',
+        image: '/Testmonials/p1.jpeg',
         name: 'John Doe',
         role: 'Founder & CEO',
     },
     {
         id: 2,
-        image: '/public/Testmonials/p2.jpg',
+        image: '/Testmonials/p2.jpg',
         name: 'Jane Smith',
         role: 'Head of Marketing',
     },
     {
         id: 3,
-        image: '/public/Testmonials/p3.jpg',
+        image: '/Testmonials/p3.jpg',
         name: 'Sam Johnson',
         role: 'Lead Developer',
     },
     {
         id: 4,
-        image: '/public/Testmonials/p2.jpg',
+        image: '/Testmonials/p2.jpg',
         name: 'Emily Davis',
         role: 'Product Designer',
     },
@@ -56,7 +56,7 @@ const AboutUs = () => {
                     {/* Image Section */}
                     <div className="w-full md:w-1/2">
                         <img
-                            src="/public/large.png"
+                            src="/large.png"
                             alt="About Us"
                             className="rounded-lg shadow-md w-full"
                         />
