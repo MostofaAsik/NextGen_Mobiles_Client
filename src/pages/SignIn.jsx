@@ -32,7 +32,10 @@ const SignIn = () => {
             .then(() => {
                 navigate('/')
             })
-    };
+
+
+    }
+
 
     return (
         <div className="max-w-sm mx-auto mt-12 p-6  mb-10 rounded-lg shadow-md">

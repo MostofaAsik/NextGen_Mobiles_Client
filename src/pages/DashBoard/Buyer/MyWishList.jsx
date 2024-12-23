@@ -60,7 +60,7 @@ const MyWishList = () => {
             if (result.isConfirmed) {
                 try {
                     const token = localStorage.getItem('access-token');
-                    const response = await axios.delete(`http://localhost:5000/wishlist/${userId}/${productId}`, {
+                    const response = await axios.delete(`https://next-gen-mobiles-server.vercel.app/wishlist/${userId}/${productId}`, {
                         headers: { 'Authorization': `Bearer ${token}` }
                     });
 

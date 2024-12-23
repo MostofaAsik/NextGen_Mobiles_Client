@@ -6,31 +6,31 @@ const FeaturedProducts = () => {
         {
             id: 1,
             name: 'Smartphone X Pro',
-            image: '/public/FeatureProduct/sp1.png',
+            image: '/FeatureProduct/sp1.png',
             price: '$999',
         },
         {
             id: 2,
             name: 'Smartphone Y Ultra',
-            image: '/public/FeatureProduct/sp2.png',
+            image: '/FeatureProduct/sp2.png',
             price: '$899',
         },
         {
             id: 3,
             name: 'Smartphone Z Max',
-            image: '/public/FeatureProduct/sp3.png',
+            image: '/FeatureProduct/sp3.png',
             price: '$799',
         },
         {
             id: 4,
             name: 'Smartphone Alpha',
-            image: '/public/FeatureProduct/sp44.png',
+            image: '/FeatureProduct/sp44.png',
             price: '$699',
         },
         {
             id: 5,
             name: 'Smartphone Beta',
-            image: '/public/FeatureProduct/sp5.png',
+            image: '/FeatureProduct/sp5.png',
             price: '$599',
         },
     ];
