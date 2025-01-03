@@ -6,7 +6,7 @@ import ContactUs from "../pages/ContactUs";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import PrivateRoute from "./PrivateRoute";
-import Dashboard from "../layout/DashBoard";
+import Dashboard from "../layout/Dashboard";
 import Overview from "../pages/DashBoard/Overview";
 import AddProduct from "../pages/DashBoard/Seller/AddProduct";
 import MyProducts from "../pages/DashBoard/Seller/MyProducts";
@@ -15,6 +15,7 @@ import MyCarts from "../pages/DashBoard/Buyer/MyCarts";
 import AllUsers from "../pages/DashBoard/Admin/AllUsers ";
 import Products from "../pages/Products";
 import ViewDetails from "../pages/ViewDetails";
+
 
 
 const router = createBrowserRouter([

@@ -28,13 +28,34 @@ const SignIn = () => {
 
     // Google Login success handler
     const handleGoogleLogin = async () => {
-        await goooleLogin()
-            .then(() => {
-                navigate('/')
-            })
+        try {
+            const result = await goooleLogin();
+            if (result) {
+                const { displayName, email, photoURL } = result.user;
+
+                // Create user object
+                const userData = {
+                    email,
+                    name: displayName,
+                    image: photoURL,
+                    role: 'buyer',
+                    status: 'approved',
+                    wishList: []
+                };
+
+                // Save user to the database
+                await axios.post(`${import.meta.env.VITE_BASE_URL}/users`, userData);
 
 
-    }
+                navigate('/');
+                toast.success('Logged in successfully');
+            }
+        } catch (error) {
+            console.error('Google login error:', error);
+            toast.error('Failed to login with Google');
+        }
+    };
+
 
 
     return (
